@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _power = 3f;
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
     {
-        
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        _rigidbody.AddRelativeForce(Vector2.right * (_power * Time.fixedDeltaTime));
     }
 }
